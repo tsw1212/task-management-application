@@ -1,0 +1,28 @@
+﻿<Window x:Class="PL.UserEngineer.TaskListToChooseWindoe"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local1 ="clr-namespace:BO;assembly=BL"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL.UserEngineer"
+        mc:Ignorable="d"
+        Title="TaskListToChooseWindoe" Height="450" Width="800"
+        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
+    
+    <Window.Resources>
+        <DataTemplate x:Key="myDataTemplate" DataType="local1:Task">
+            <Border BorderBrush="Gray" BorderThickness="1" Margin="5" Padding="5">
+                <StackPanel Width="100" Height="100">
+                    <TextBlock Text="{Binding Id}" FontWeight="Bold" />
+                    <CheckBox  IsChecked="{Binding Status, Converter={StaticResource ConvertStatusToIsCheckedKey}, Mode=TwoWay}"
+                          Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" />
+                    <TextBlock Text="{Binding Description}" />
+                    <TextBlock Text="{Binding Alias}" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <ListView Margin="5" Grid.Row="1" ItemsSource="{Binding TasksOfEnginner }" ItemTemplate="{StaticResource myDataTemplate}" />
+    </Grid>
+</Window>

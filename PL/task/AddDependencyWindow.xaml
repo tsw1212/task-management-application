@@ -1,0 +1,24 @@
+﻿<Window x:Class="PL.task.AddDependencyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL.task"
+        mc:Ignorable="d"
+        Title="AddDependencyWindow" Height="450" Width="800"
+        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label>Double click and add the task to the dependent list</Label>
+
+        <!-- הקפץ את ה- ListView בתוך ScrollViewer -->
+        <ScrollViewer Grid.Row="1" Margin="5">
+            <ListView ItemsSource="{Binding allTask}" MouseDoubleClick="Chossen_dubbleClick"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
